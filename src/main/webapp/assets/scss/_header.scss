@@ -1,0 +1,56 @@
+
+.am-topbar {
+  margin: 0;
+  min-height: auto;
+  line-height: 1;
+  .am-topbar-brand {
+    height: 3rem;
+    line-height: 3rem;
+  }
+  .el-dropdown-link {
+    line-height: 36px;
+  }
+  .am-topbar-nav>li{
+    float: none;
+    display: inline-block;
+  }
+  .am-topbar-nav a>i {
+    font-size: 15px;
+  }
+  @media only screen and (min-width: 641px){
+    .am-topbar-form {
+      padding: 0 10px;
+      margin: 0.7rem 1.5rem;
+    }
+    .am-form-inline .am-form-field {
+      padding-top: 2px;
+      padding-bottom: 2px;
+      border-radius: 100px;
+      font-size: 1rem;
+    }
+
+    .am-topbar-nav>li>a {
+      padding: 10px 10px 11px;
+      line-height:1;
+      &::after{
+        content: none;
+      }
+    }
+  }
+  .el-dropdown {
+    font-size: inherit;
+  }
+
+}
+.user-profile {
+  img {
+    width: 29px;
+    height: 29px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+}
+
+.tabs-bar {
+
+}

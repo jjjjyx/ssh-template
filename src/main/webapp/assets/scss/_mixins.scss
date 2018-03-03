@@ -1,0 +1,78 @@
+@mixin user-select($v) {
+    -webkit-user-select: $v;
+    -moz-user-select: $v;
+    -ms-user-select: $v;
+    user-select: $v;
+}
+
+@mixin bg-variant($parent, $color) {
+  #{$parent} {
+    background-color: $color !important;
+  }
+  a#{$parent} {
+    @include hover-focus {
+      background-color: darken($color, 10%) !important;
+    }
+  }
+}
+
+@mixin hover {
+
+//  @if $enable-hover-media-query {
+//    // See Media Queries Level 4: https://drafts.csswg.org/mediaqueries/#hover
+//    // Currently shimmed by https://github.com/twbs/mq4-hover-shim
+//    @media (hover: hover) {
+//      &:hover { @content }
+//    }
+//  }
+//  @else {
+// scss-lint:disable Indentation
+    &:hover { @content }
+// scss-lint:enable Indentation
+//  }
+}
+
+
+@mixin hover-focus {
+  @if $enable-hover-media-query {
+    &:focus { @content }
+    @include hover { @content }
+  } @else {
+    &:focus,
+    &:hover {
+      @content
+    }
+  }
+}
+
+@mixin plain-hover-focus {
+  @if $enable-hover-media-query {
+    &,
+    &:focus {
+      @content
+    }
+    @include hover { @content }
+  } @else {
+    &,
+    &:focus,
+    &:hover {
+      @content
+    }
+  }
+}
+
+@mixin hover-focus-active {
+  @if $enable-hover-media-query {
+    &:focus,
+    &:active {
+      @content
+    }
+    @include hover { @content }
+  } @else {
+    &:focus,
+    &:active,
+    &:hover {
+      @content
+    }
+  }
+}

@@ -1,0 +1,56 @@
+
+.am-panel {
+    margin: 0;
+    border-color: transparent;
+    position: relative;
+    flex-direction: column;
+}
+.am-panel-bd {
+    flex:1;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.resize-handle-resizable {
+    position: absolute;
+    z-index: 11;
+    height: auto;
+    &.left {
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 4px;
+        cursor: col-resize;
+    }
+    &.right {
+        top: 0;
+        bottom: 0;
+        right: 0;
+        width: 4px;
+        cursor: col-resize;
+    }
+    &.top {
+        top: 0;
+        right: 0;
+        left: 0;
+        height: 4px;
+        cursor: row-resize;
+    }
+    &.bottom {
+        bottom: 0;
+        right: 0;
+        left: 0;
+        height: 4px;
+        cursor: row-resize;
+    }
+}
+
+.collapse-wrapper {
+    position: relative;
+    height: 100%;
+    .el-collapse {
+
+    }
+}

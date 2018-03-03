@@ -1,0 +1,96 @@
+.footer {
+
+    height: 2.5em;
+    line-height: 2.5em;
+    cursor: default;
+    overflow: hidden;
+    white-space: nowrap;
+    border-top: $border-width solid $border-color;
+}
+
+.status-bar {
+    padding: 0 8px;
+    display: flex;
+    .am-inline-block {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        max-width: 20vw;
+        vertical-align: top;
+    }
+
+    .status-bar-left {
+        flex: 1 1 33%;
+        .am-inline-block {
+            margin-right: 1.5em;
+
+        }
+    }
+
+    .status-bar-right {
+        padding-left: 10px;
+        .am-inline-block {
+            margin-left: 1.5em;
+        }
+    }
+    .am-inline-block:empty {
+        margin-left: 0;
+    }
+    .el-dropdown {
+        font-size: inherit;
+    }
+
+    .file-info {
+        a {
+
+        }
+        a:hover{
+            text-decoration: underline;
+        }
+    }
+
+    .status-bar-left,.status-bar-right {
+        //overflow-x: auto;
+    }
+
+    .linter-status-count {
+        font-size: 0;
+        span {
+            font-size: 1rem;
+            border-radius: 0px;
+            padding: 4px 6px;
+            font-weight: 700;
+            color: #FFFFFF;
+            background-color: #0E90D2;
+        }
+        span:first-child{
+            border-top-left-radius: 3px;
+            border-bottom-left-radius: 3px;
+        }
+        span:last-child{
+            border-top-right-radius: 3px;
+            border-bottom-right-radius: 3px;
+            margin-right: 1.5em;
+        }
+    }
+    .loading-spinner-tiny {
+        margin-top: 0.4em;
+        margin-right: 0;
+        margin-left: 1.5em;
+
+        position: relative;
+        display: block;
+        width: 1em;
+        height: 1em;
+        font-size: 16px;
+        background: radial-gradient(#568af2 0.1em, transparent 0.11em);
+    }
+    .loading-spinner-tiny.idle {
+        background: radial-gradient(#64c42d  0.1em, transparent 0.11em);
+    }
+}
+.grammar-drop {
+    .el-dropdown-menu__item {
+        line-height: 24px;
+    }
+}
