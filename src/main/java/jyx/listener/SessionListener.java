@@ -29,7 +29,7 @@ public class SessionListener implements ServletContextListener,
     public void contextInitialized(ServletContextEvent arg0) {
         this.application = arg0.getServletContext();
 //this.application.setAttribute("allusers", new ArrayList<UserBean>());
-        logger.info("dataFormat 已就绪");
+        logger.info("服务已就绪");
 
     }
 

@@ -1,5 +1,5 @@
 require.config({
-    baseUrl: config.remote.root?config.remote.root:'/',
+    baseUrl: config.remote.root ? config.remote.root: '/',
     appDir: './sds',
     paths: {
         lib:"assets/lib",

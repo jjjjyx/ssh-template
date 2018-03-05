@@ -1,9 +1,9 @@
-define(['vue'],function (Vue) {
+define(function () {
 
-    const isServer = Vue.prototype.$isServer;
+
     const SPECIAL_CHARS_REGEXP = /([\:\-\_]+(.))/g;
     const MOZ_HACK_REGEXP = /^moz([A-Z])/;
-    const ieVersion = isServer ? 0 : Number(document.documentMode);
+
 
     /* istanbul ignore next */
     const trim = function(string) {
@@ -18,7 +18,7 @@ define(['vue'],function (Vue) {
 
     /* istanbul ignore next */
    const on = (function() {
-        if (!isServer && document.addEventListener) {
+        if (document.addEventListener) {
             return function(element, event, handler) {
                 if (element && event && handler) {
                     element.addEventListener(event, handler, false);
@@ -35,7 +35,7 @@ define(['vue'],function (Vue) {
 
     /* istanbul ignore next */
     const off = (function() {
-        if (!isServer && document.removeEventListener) {
+        if (document.removeEventListener) {
             return function(element, event, handler) {
                 if (element && event) {
                     element.removeEventListener(event, handler, false);
@@ -120,7 +120,7 @@ define(['vue'],function (Vue) {
 
     /* istanbul ignore next */
     const getStyle = ieVersion < 9 ? function(element, styleName) {
-        if (isServer) return;
+
         if (!element || !styleName) return null;
         styleName = camelCase(styleName);
         if (styleName === 'float') {
@@ -141,7 +141,6 @@ define(['vue'],function (Vue) {
             return element.style[styleName];
         }
     } : function(element, styleName) {
-        if (isServer) return;
         if (!element || !styleName) return null;
         styleName = camelCase(styleName);
         if (styleName === 'float') {

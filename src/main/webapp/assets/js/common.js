@@ -1,9 +1,8 @@
 require.config({
     paths: {
-        vue: '../lib/vue.min',
-        VueRouter: '../lib/vue-router.min',
-        api:'api',
-        socket:'socket',
-        ELEMENT: '../lib/element-ui'
+        vue: '../../js/lib/vue.min',
+        VueRouter: '../../js/lib/vue-router.min',
+        ELEMENT: '../../js/lib/element-ui',
+        api:'api'
     }
 });

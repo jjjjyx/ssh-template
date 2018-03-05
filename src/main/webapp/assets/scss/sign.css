@@ -4,7 +4,7 @@
 
 body {
   margin: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", FontAwesome, sans-serif;
   font-size: 1rem;
   font-weight: normal;
   line-height: 1.5;
@@ -103,6 +103,11 @@ sub {
 
 sup {
   top: -.5em; }
+
+a {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  user-select: text; }
 
 a:not([href]):not([tabindex]) {
   text-decoration: none;
@@ -339,6 +344,48 @@ template {
 .rounded-0 {
   border-radius: 0; }
 
+.position-static {
+  position: static !important; }
+
+.position-relative {
+  position: relative !important; }
+
+.position-absolute {
+  position: absolute !important; }
+
+.position-fixed {
+  position: fixed !important; }
+
+.position-sticky {
+  position: sticky !important; }
+
+.fixed-top {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030; }
+
+.fixed-bottom {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1030; }
+
+@supports (position: sticky) {
+  .sticky-top {
+    position: sticky;
+    top: 0;
+    z-index: 1020; } }
+
+.absolute-max {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0; }
+
 body, html {
   height: 100%; }
 
@@ -357,7 +404,7 @@ body {
   color: #9da5b4; }
 
 .form-wrapper {
-  width: 50%;
+  width: 25%;
   display: flex; }
   .form-wrapper .logo {
     width: 45%;

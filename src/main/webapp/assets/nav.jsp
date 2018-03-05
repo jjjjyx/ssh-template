@@ -1,14 +1,7 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: xsq87
-  Date: 2017-09-21
-  Time: 15:47
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <header class="am-topbar am-topbar-inverse">
     <h1 class="am-topbar-brand">
-        <a href="#">Data Format</a>
+        <a href="#">###</a>
     </h1>
     <ul class="am-topbar-right am-nav am-nav-pills am-topbar-nav">
         <li>
