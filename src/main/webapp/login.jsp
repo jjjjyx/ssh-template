@@ -18,8 +18,8 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link href="${path}/js/lib/amazeui.min.css" rel="stylesheet">
-    <link href="${path}/js/lib/animate.min.css" rel="stylesheet">
+    <link href="${path}/css/amazeui.min.css" rel="stylesheet">
+    <link href="${path}/css/animate.min.css" rel="stylesheet">
     <link href="${path}/assets/scss/sign.css" rel="stylesheet">
 
 </head>
