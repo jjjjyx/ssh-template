@@ -31,6 +31,5 @@ config.properties
 /target/
 .idea
 src/main/webapp/assets
-src/main/webapp/js/lib
 *.hprof
 
