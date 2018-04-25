@@ -1,25 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE struts PUBLIC
-	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
-	"http://struts.apache.org/dtds/struts-2.3.dtd">
+		"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+		"http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-	<constant name="struts.devMode" value="true" />
+	<constant name="struts.devMode" value="false" />
 	<constant name="struts.i18n.encoding" value="utf-8"></constant>
 	<constant name="struts.objectFactory" value="spring" />
 	<!-- -->
 	<constant name="struts.objectFactory.spring.autoWire" value="name" />
 	<!-- 是否开启动态方法调用 -->
 	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
-	<constant name="struts.objectFactory.spring.autoWire.alwaysRespect"
-		value="true" />
-	<!-- 设置浏览器是否缓存静态内容。默认值为true(生产环境下使用),开发阶段最好关闭  -->  
+	<constant name="struts.objectFactory.spring.autoWire.alwaysRespect" value="true" />
+	<!-- 设置浏览器是否缓存静态内容。默认值为true(生产环境下使用),开发阶段最好关闭  -->
 	<constant name="struts.serve.static.browserCache" value="false" />
 
 	<!-- 该属性指定视图标签默认的视图主题，该属性的默认值是xhtml。 -->
 	<constant name="struts.ui.theme" value="simple"></constant>
 	<!-- 上传文件是所允许的文件最大值 -->
-	<constant name="struts.multipart.maxSize" value="10485760"></constant>
+	<constant name="struts.multipart.maxSize" value="1048576000"></constant>
+
+	<constant name="struts.enable.SlashesInActionNames" value="true"/>
+	<constant name="struts.mapper.alwaysSelectFullNamespace" value="false"/>
+	<constant name="struts.patternMatcher" value="regex" />
+	<constant name="struts.action.extension" value=","/>
 	<!-- 设置文件上传时的临时文件夹时F盘下的temp文件夹 -->
 
 	<constant name="struts.action.excludePattern" value="/ws*,^ws://.$"/>
@@ -35,12 +39,16 @@
 			<interceptor-stack name="userStack">
 				<interceptor-ref name="defaultStack"></interceptor-ref>
 				<!--把自己的拦截器添加到定义的拦截器栈里面 -->
-				<!--<interceptor-ref name="user"></interceptor-ref>-->
+				<interceptor-ref name="user"></interceptor-ref>
 			</interceptor-stack>
 
 			<!--定义自己的拦截器 -->
+			<!--访问限制拦截器-->
 			<!--<interceptor name="limiterInterceptor" class="jyx.action.interceptor.LimiterInterceptor" />-->
-			<!--<interceptor name="user" class="jyx.action.interceptor.UserInterceptor" />-->
+			<!--用户登录验证-->
+			<interceptor name="user" class="jyx.action.UserInterceptor" />
+			<!--管理员权限拦截器-->
+			<!--<interceptor name="admin" class="jyx.action.admin.AdminInterceptor" />-->
 		</interceptors>
 		<!--调用拦截器 -->
 		<default-interceptor-ref name="defStack" />
@@ -49,11 +57,15 @@
 		<global-results>
 			<result name="session-null" type="redirectAction">
 				<param name="namespace">/</param>
-				<param name="actionName">!execute</param>
+				<param name="actionName">login</param>
 			</result>
-			<result name="completion-info" type="redirectAction">
+			<!--<result name="completion-info" type="redirectAction">-->
+			<!--<param name="namespace">/</param>-->
+			<!--<param name="actionName">!execute?_#info-form</param>-->
+			<!--</result>-->
+			<result name="access-fail" type="redirectAction">
 				<param name="namespace">/</param>
-				<param name="actionName">!execute?_#info-form</param>
+				<param name="actionName">home</param>
 			</result>
 
 			<result name="err-handler" type="chain">
@@ -67,16 +79,26 @@
 			<result name="json" type="json">
 				<param name="root">data</param>
 				<!--data.result\[\d+\]\.parentDir,-->
-				<!--<param name="excludeProperties">-->
-					<!--data\[\d+\]\.parentDir,-->
-					<!--.*\.fileOutDetail\.fileBean-->
-				<!--</param>-->
+				<param name="excludeProperties">
+					<!--data\.\w+.activitys,-->
+					<!--data\.\w+.follows,-->
+					<!--data\.\w+.password,-->
+					<!--data\.\w+.stars,-->
+					<!--data\.\w+.thumbs_up,-->
+					<!--data\.\w+.users,-->
+					<!--data\[\d\].\w+.activitys,-->
+					<!--data\[\d\].\w+.follows,-->
+					<!--data\[\d\].\w+.password,-->
+					<!--data\[\d\].\w+.stars,-->
+					<!--data\[\d\].\w+.thumbs_up,-->
+					<!--data\[\d\].\w+.users-->
+				</param>
 			</result>
 			<result name="input" type="json">
 				<param name="root">data</param>
 				<!--<param name="excludeProperties">-->
-					<!--data\[\d+\].parentDir,-->
-					<!--data.fileList\[\d+\].parentDir-->
+
+				<!--&lt;!&ndash;data.fileList\[\d+\].parentDir&ndash;&gt;-->
 				<!--</param>-->
 			</result>
 		</global-results>
@@ -87,6 +109,6 @@
 		</global-exception-mappings>
 	</package>
 	<!--<package name="user-package" extends="default-package">-->
-		<!---->
+	<!---->
 	<!--</package>-->
 </struts>

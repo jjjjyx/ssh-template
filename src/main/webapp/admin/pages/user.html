@@ -1,0 +1,127 @@
+<div >
+    <div class="row">
+        <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+            <div class="widget am-cf">
+                <div class="widget-head am-cf">
+                    <div class="widget-title  am-cf">用户列表</div>
+                </div>
+                <div class="widget-body  am-fr">
+
+                    <div class="am-u-sm-12 am-u-md-6 am-u-lg-6">
+                        <div class="am-form-group">
+                            <div class="am-btn-toolbar">
+                                <div class="am-btn-group am-btn-group-xs">
+                                    <button type="button" class="am-btn am-btn-default am-btn-success" @click="dialogVisible = true,newUser(currData = {})"><span class="am-icon-plus"></span> 新增</button>
+                                    <button type="button" class="am-btn am-btn-default am-btn-secondary" @click="resetPassword"><span class="am-icon-refresh"></span> 重置密码</button>
+                                    <!--<button type="button" class="am-btn am-btn-default am-btn-warning"><span class="am-icon-archive"></span> 查看</button>-->
+                                    <!--<button type="button" class="am-btn am-btn-default am-btn-danger"><span class="am-icon-trash-o"></span> 删除</button>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="am-u-sm-12">
+                        <el-table ref="multipleTable" @selection-change=" val => multipleSelection = val"
+                                  :data="userList"
+                                  tooltip-effect="dark"
+                                  style="width: 100%">
+                            <el-table-column
+                                    type="selection"
+                                    width="55">
+                            </el-table-column>
+                            <el-table-column
+                                prop="uid"
+                                label="uid">
+                            </el-table-column>
+                            <el-table-column
+                                    prop="username"
+                                    label="账号">
+                            </el-table-column>
+                            <el-table-column
+                                    prop="nickname"
+                                    label="用户名">
+                            </el-table-column>
+                            <el-table-column
+                                    prop="sex"
+                                    label="性别">
+                            </el-table-column>
+                            <el-table-column
+                                    prop="love"
+                                    label="喜好">
+                            </el-table-column>
+                            <el-table-column
+                                    prop="email"
+                                    label="邮箱">
+                            </el-table-column>
+                            <el-table-column
+                                    prop="city"
+                                    label="城市">
+                            </el-table-column>
+                            <el-table-column label="操作" width="180">
+                                <template scope="scope">
+                                    <!--@click.native.prevent="deleteRow(scope.$index, tableData4)"-->
+                                    <el-button type="text" size="small" @click="dialogVisible = true,editUser(currData = scope.row)">
+                                        编辑
+                                    </el-button>
+                                    <el-button type="text" size="small" @click="multipleSelection=[scope.row],resetPassword()">
+                                        重置密码
+                                    </el-button>
+                                    <el-button type="text" size="small" @click="deleteUser(scope.row)">
+                                        删除
+                                    </el-button>
+                                </template>
+                            </el-table-column>
+
+                        </el-table>
+                    </div>
+                    <div class="am-u-lg-12 am-cf">
+                        <div class="am-fr">
+                            <el-pagination
+                                    small
+                                    layout="prev, pager, next"
+                                    :current-page.sync="currPage"
+                                    :total="store.states.user_data.length">
+                            </el-pagination>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <el-dialog append-to-body
+            title="提示"
+            :visible.sync="dialogVisible"
+            width="30%"
+            @close="handleClose">
+        <el-form ref="form" :model="form" label-width="80px">
+            <el-form-item label="账号">
+                <el-input v-model="form['user.username']" :disabled="active=='updateUser'"></el-input>
+            </el-form-item>
+            <el-form-item label="密码">
+                <el-input v-model="form['user.password']" ></el-input>
+            </el-form-item>
+            <el-form-item label="姓名">
+                <el-input v-model="form['user.nickname']" ></el-input>
+            </el-form-item>
+            <el-form-item label="邮箱">
+                <el-input v-model="form['user.email']" ></el-input>
+            </el-form-item>
+            <el-form-item label="性别">
+                <el-radio-group v-model="form['user.sex']">
+                    <el-radio label="男"></el-radio>
+                    <el-radio label="女"></el-radio>
+                </el-radio-group>
+            </el-form-item>
+            <el-form-item label="喜好">
+                <el-input v-model="form['user.love']" ></el-input>
+            </el-form-item>
+            <el-form-item label="所在城市">
+                <el-input v-model="form['user.city']" ></el-input>
+            </el-form-item>
+        </el-form>
+
+        <span slot="footer" class="dialog-footer">
+            <el-button @click="dialogVisible = false">取 消</el-button>
+            <el-button type="primary" @click="save()">保存</el-button>
+        </span>
+    </el-dialog>
+</div>

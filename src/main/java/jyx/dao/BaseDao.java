@@ -229,7 +229,7 @@ public class BaseDao<T, PK extends Serializable> {
      */
     public List<T> loadAll() {
 
-//		List<T> lst = getSession().loadAll(entityClass);
+//		List<T> lst = getSession().loadDataAll(entityClass);
         Criteria criteria = getSession().createCriteria(entityClass);
         criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
 //		criteria
@@ -256,7 +256,7 @@ public class BaseDao<T, PK extends Serializable> {
      * @param params
      * @return 查询结果
      */
-    public List<T> find(String hql, Object... params) {
+    public List<T> find(String hql, Object[] params) {
         Assert.hasText(hql);
 
         if (logger.isTraceEnabled()) {
@@ -288,7 +288,7 @@ public class BaseDao<T, PK extends Serializable> {
     }
 
 
-    public List<T> findBySql(String sql, Object... params) {
+    public List<T> findBySql(String sql, Object[] params) {
         Assert.hasText(sql);
 
         if (logger.isTraceEnabled()) {
