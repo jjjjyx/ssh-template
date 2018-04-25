@@ -33,4 +33,4 @@ config.properties
 src/main/webapp/assets
 src/main/webapp/js/lib
 *.hprof
-
+/*.iml

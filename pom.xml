@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.jyx</groupId>
-    <artifactId>fitness.community</artifactId>
+    <artifactId>ssh.template</artifactId>
     <version>1.0</version>
     <packaging>war</packaging>
 
@@ -239,7 +239,7 @@
     </dependencies>
 
     <build>
-        <finalName>DataFormat</finalName>
+        <finalName>ssh-template</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -284,7 +284,7 @@
                 <version>2.2</version>
                 <configuration>
                     <port>8081</port>
-                    <path>/fc</path>
+                    <path>/hello</path>
                     <uriEncoding>UTF-8</uriEncoding>
                 </configuration>
                 <!--<executions>-->
